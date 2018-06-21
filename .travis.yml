@@ -1,0 +1,11 @@
+language: node_js
+
+services:
+  - docker
+
+before_install:
+  - docker build -t thelounge/thelounge .
+
+script:
+  - docker run -d -p 127.0.0.1:9000:9000 thelounge/thelounge
+  - curl 127.0.0.1:9000
